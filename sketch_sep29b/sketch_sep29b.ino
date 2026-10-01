@@ -22,7 +22,9 @@
     
 
     if(ledState == true) {
-      Counter = Counter +1-100;
+      if (Counter < 100){
+      Counter = Counter + 1;
+      }
     }
     else {
       Counter = 0;
