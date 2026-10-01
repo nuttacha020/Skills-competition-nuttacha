@@ -1,28 +1,32 @@
-int BUTTON = 23;
-int LED = 22;
-int Counter = 0;
-bool ledState = false;
-int lastButtonState = HIGH;
+  int BUTTON = 23;
+  int LED = 22;
+  int Counter = 0;
 
-void setup() {
-  Serial.begin(115200);
-  pinMode(BUTTON, INPUT_PULLUP);
-  pinMode(LED, OUTPUT);
-  digitalWrite(LED, LOW);
-}
+  bool ledState = false ;
+  bool lastButtonState = HIGH;
 
-void loop() {
-  int buttonState = digitalRead(BUTTON);
-
-  if (lastButtonState == HIGH && buttonState == LOW) {  // เพิ่งกด
-    Counter = Counter + 1;
-    ledState = !ledState;
-    digitalWrite(LED, ledState);
-
-    Serial.println(Counter);
-
-    delay(50);  // debounce
+  void setup() {
+    Serial.begin(9600);
+    pinMode(BUTTON,INPUT_PULLUP);
+    pinMode(LED, OUTPUT);
+    digitalWrite(LED, LOW);
   }
+  
+  void loop() {
+    int BUTTON_State = digitalRead(BUTTON);
+    Serial.println(Counter);
+    if(lastButtonState == HIGH && BUTTON_State == LOW) {
+      ledState = !ledState;
+      digitalWrite(LED, ledState);
+    }
+    
 
-  lastButtonState = buttonState;
-}
+    if(ledState == true) {
+      Counter = Counter +1-100;
+    }
+    else {
+      Counter = 0;
+    }
+
+    lastButtonState = BUTTON_State;
+  }
