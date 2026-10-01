@@ -19,7 +19,6 @@ void loop() {
     ledState = !ledState;
     digitalWrite(LED, ledState);
 
-    Serial.print("Counter = ");
     Serial.println(Counter);
 
     delay(50);  // debounce
