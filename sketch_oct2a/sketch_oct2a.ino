@@ -20,5 +20,5 @@ void loop() {
   String dhtData = String(H) + "," + String(T);
 
   Serial.println (dhtData);
-  delay(1500);
+  delay(2000);
 }
