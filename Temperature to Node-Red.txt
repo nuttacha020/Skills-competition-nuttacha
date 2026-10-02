@@ -1,0 +1,36 @@
+  
+          Coding for Arduino
+........................................................... ทุกท่านสามารถคัดลอกไปวางได้เลยครับ
+
+ #include <DHT.h>        
+
+  #define DHTPIN 2         
+  #define DHTTYPE DHT22     
+
+  DHT dht(DHTPIN, DHTTYPE);   
+
+  void setup () {
+    dht.begin();
+    Serial.begin(9600);         
+  }
+
+  void loop (){
+
+      float H = dht.readHumidity();     
+      float T = dht.readTemperature();    
+
+      String dhtData = String(H) + "," + String(T);
+      
+      Serial.println(dhtData);
+      delay(2000); 
+  }
+
+................................................................. ทุกท่านสามารถคัดลอกไปวางได้เลยครับ
+    Coding for Node-Red
+.................................................................
+
+  var m = msg.payload.split(',');
+  var T = { payload: parseFloat(m[0]) };
+  var H = { payload: parseFloat(m[1]) };
+
+  return [H, T];
